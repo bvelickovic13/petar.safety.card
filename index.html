@@ -12,110 +12,48 @@
       --accent:#ff6600;
       --text:#111;
       --muted:#666;
-      --radius:20px;
     }
-    /* Base */
     *{box-sizing:border-box}
-    html, body{
-      padding:0; margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      line-height:1.35;
-    }
-    /* Page container – scrolls naturally */
-    .page{
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 16px;
-    }
-    /* Card */
+    html, body{ margin:0; padding:0; background:var(--bg); color:var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Arial, 'Apple Color Emoji','Segoe UI Emoji'; }
+    .page{ max-width: 960px; margin:0 auto; padding:12px; }
     .card{
       background:var(--surface);
       border:6px solid var(--accent);
       border-radius:24px;
       box-shadow: 0 10px 40px rgba(0,0,0,.28);
-      padding:16px;
+      padding:12px;
     }
-    /* Header image – full width on mobile */
     .photo{
       width:100%;
       border-radius:16px;
       overflow:hidden;
       border:4px solid var(--accent);
-      background:#ddd;
-      margin-bottom:16px;
+      background:#000;
+      margin-bottom:14px;
     }
+    /* KEY: show full image, never crop */
     .photo img{
       display:block;
       width:100%;
-      height:auto;        /* keep full image, no crop */
+      height:auto;           /* keeps full image height */
+      object-fit: contain;   /* do not crop */
+      background-color:#000; /* in case aspect ratio leaves bars */
     }
-    /* Headings/Text */
-    h1{
-      font-size: clamp(26px, 6vw, 42px);
-      margin: 4px 0 6px 0;
-    }
-    .subtitle{
-      color:var(--muted);
-      font-weight:700;
-      margin: 0 0 16px 0;
-      font-size: clamp(15px, 3.5vw, 20px);
-    }
-    .badge{
-      background:var(--accent);
-      color:#fff;
-      padding: 3px 10px;
-      border-radius:999px;
-      font-weight:900;
-      font-size: 13px;
-      margin-right:8px;
-    }
-    .block{
-      background:#fafafa;
-      border:1px solid #eee;
-      border-radius: var(--radius);
-      padding:14px;
-      margin: 10px 0 16px 0;
-    }
-    .text{
-      font-size: clamp(18px, 4.5vw, 24px);
-      font-weight:800;
-      margin: 0 0 12px 0;
-      color:#111;
-    }
-    /* Phone buttons – large tap targets, 100% width */
-    .phones{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:10px;
-    }
-    .btn{
-      display:flex; align-items:center; justify-content:space-between;
-      padding:16px;
-      width:100%;
-      background:#111; color:#fff; text-decoration:none;
-      border-radius:16px;
-      font-weight:900;
-      font-size: clamp(16px, 4vw, 20px);
-      border:2px solid #111;
-      box-shadow: 0 6px 16px rgba(0,0,0,.18);
-    }
+    h1{ font-size: clamp(26px, 6vw, 42px); margin: 6px 0 6px 0; }
+    .subtitle{ color:var(--muted); font-weight:700; margin: 0 0 16px 0; font-size: clamp(15px, 3.5vw, 20px); }
+    .badge{ background:var(--accent); color:#fff; padding: 3px 10px; border-radius:999px; font-weight:900; font-size: 13px; margin-right:8px; }
+    .block{ background:#fafafa; border:1px solid #eee; border-radius: 18px; padding:14px; margin: 10px 0 16px 0; }
+    .text{ font-size: clamp(18px, 4.5vw, 24px); font-weight:800; margin: 0 0 12px 0; color:#111; }
+    .phones{ display:grid; grid-template-columns: 1fr; gap:10px; }
+    .btn{ display:flex; align-items:center; justify-content:space-between; padding:16px; width:100%;
+      background:#111; color:#fff; text-decoration:none; border-radius:16px; font-weight:900; font-size: clamp(16px, 4vw, 20px); border:2px solid #111; box-shadow: 0 6px 16px rgba(0,0,0,.18); }
     .btn.light{ background:#fff; color:#111; border-color:#ddd }
-    .btn .label{opacity:.95}
-    .btn .num{font-feature-settings: 'tnum'; letter-spacing:.5px}
-    /* Footer note */
-    .footer{
-      color:#555; font-size:13px; margin-top: 6px; margin-bottom: 6px;
-    }
-    /* Larger screens – simple two-column layout */
+    .btn .label{opacity:.95} .btn .num{font-feature-settings: 'tnum'; letter-spacing:.5px}
+    .footer{ color:#555; font-size:13px; margin-top: 6px; margin-bottom: 6px; }
     @media (min-width: 860px){
-      .content{
-        display:grid; grid-template-columns: 340px 1fr; gap:18px;
-      }
+      .content{ display:grid; grid-template-columns: 360px 1fr; gap:16px; }
     }
-    /* Make sure page always scrolls */
-    .spacer{height: 10px}
   </style>
 </head>
 <body>
@@ -123,7 +61,7 @@
     <div class="card">
       <div class="content">
         <figure class="photo">
-          <img src="./petar.png" alt="Petar – fotografija">
+          <img src="./petar.png" alt="Petar – fotografija (full, no crop)">
         </figure>
 
         <div>
@@ -150,7 +88,6 @@
         </div>
       </div>
     </div>
-    <div class="spacer"></div>
   </div>
 </body>
 </html>
