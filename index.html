@@ -13,12 +13,12 @@
       --text:#111;
       --muted:#666;
     }
-    *{box-sizing:border-box}
-    html, body{
-      margin:0; padding:0;
-      background:var(--bg);
-      color:var(--text);
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Arial, 'Apple Color Emoji','Segoe UI Emoji';
+    *{box-sizing:border-box;max-width:100%;}
+    html, body{ 
+      margin:0; padding:0; 
+      background:var(--bg); color:var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Arial, 'Apple Color Emoji','Segoe UI Emoji'; 
+      overflow-x:hidden;
     }
     .page{ max-width: 960px; margin:0 auto; padding:12px; }
     .card{
@@ -27,23 +27,29 @@
       border-radius:24px;
       box-shadow: 0 10px 40px rgba(0,0,0,.28);
       padding:12px;
+      overflow:hidden;
     }
+    /* PHOTO BLOCK (hard fix centered, no overflow) */
     .photo{
       width:100%;
-      border-radius:16px;
-      overflow:hidden;
-      border:4px solid var(--accent);
-      background:#000;
+      margin-inline:auto;
+      margin-top:0;
       margin-bottom:14px;
+      border:4px solid var(--accent);
+      border-radius:16px;
+      background:#000;
       text-align:center;
+      overflow:hidden;
+      max-width:100%;
+      transform:translateX(0);
     }
-    /* Centered, full visible image */
     .photo img{
       display:block;
-      margin:0 auto;
+      margin-inline:auto;
       max-width:100%;
       height:auto;
       object-fit:contain;
+      transform:translateX(0);
       background-color:#000;
     }
     h1{ font-size: clamp(26px, 6vw, 42px); margin: 6px 0 6px 0; text-align:center; }
@@ -63,43 +69,35 @@
     .btn .label{opacity:.95}
     .btn .num{font-feature-settings:'tnum'; letter-spacing:.5px}
     .footer{ color:#555; font-size:13px; margin-top: 6px; margin-bottom: 6px; text-align:center; }
-    @media (min-width: 860px){
-      .content{ display:grid; grid-template-columns: 360px 1fr; gap:16px; align-items:start; }
-      .text, h1, .subtitle, .footer{text-align:left;}
-    }
   </style>
 </head>
 <body>
   <div class="page">
     <div class="card">
-      <div class="content">
-        <figure class="photo">
-          <img src="./petar.png" alt="Petar – fotografija (centred, full visible)">
-        </figure>
+      <figure class="photo">
+        <img src="./petar.png" alt="Petar – fotografija (centered hard fix)">
+      </figure>
 
-        <div>
-          <h1>Petar</h1>
-          <p class="subtitle"><span class="badge">INFO</span> Varnostna kartica / Safety Card</p>
+      <h1>Petar</h1>
+      <p class="subtitle"><span class="badge">INFO</span> Varnostna kartica / Safety Card</p>
 
-          <section class="block">
-            <p class="text">Živjo, jaz sem Petar in imam avtizem. Izgubil sem se. Prosim, pokliči moje starše.</p>
-            <div class="phones">
-              <a class="btn" href="tel:+38670512554"><span class="label">Pokliči mamo</span> <span class="num">+386 70 512 554</span></a>
-              <a class="btn" href="tel:+38670149037"><span class="label">Pokliči očeta</span> <span class="num">+386 70 149 037</span></a>
-            </div>
-          </section>
-
-          <section class="block">
-            <p class="text">Hello, my name is Petar and I have autism. I am lost. Please call my parents.</p>
-            <div class="phones">
-              <a class="btn light" href="tel:+38670512554"><span class="label">Call Mom</span> <span class="num">+386 70 512 554</span></a>
-              <a class="btn light" href="tel:+38670149037"><span class="label">Call Dad</span> <span class="num">+386 70 149 037</span></a>
-            </div>
-          </section>
-
-          <p class="footer">Če si našel to kartico ali Petar potrebuje pomoč, prosimo pokliči čim prej. / If you found this card or Petar needs help, please call immediately.</p>
+      <section class="block">
+        <p class="text">Živjo, jaz sem Petar in imam avtizem. Izgubil sem se. Prosim, pokliči moje starše.</p>
+        <div class="phones">
+          <a class="btn" href="tel:+38670512554"><span class="label">Pokliči mamo</span> <span class="num">+386 70 512 554</span></a>
+          <a class="btn" href="tel:+38670149037"><span class="label">Pokliči očeta</span> <span class="num">+386 70 149 037</span></a>
         </div>
-      </div>
+      </section>
+
+      <section class="block">
+        <p class="text">Hello, my name is Petar and I have autism. I am lost. Please call my parents.</p>
+        <div class="phones">
+          <a class="btn light" href="tel:+38670512554"><span class="label">Call Mom</span> <span class="num">+386 70 512 554</span></a>
+          <a class="btn light" href="tel:+38670149037"><span class="label">Call Dad</span> <span class="num">+386 70 149 037</span></a>
+        </div>
+      </section>
+
+      <p class="footer">Če si našel to kartico ali Petar potrebuje pomoč, prosimo pokliči čim prej. / If you found this card or Petar needs help, please call immediately.</p>
     </div>
   </div>
 </body>
